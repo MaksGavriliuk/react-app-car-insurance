@@ -17,34 +17,6 @@ class ListBrandsComponent extends Component {
             })
     }
 
-    // render() {
-    //     return (
-    //         <div>
-    //             <h2 className="text-center">Brands list</h2>
-    //             <table className="table table-striped table-bordered">
-    //                 <thead>
-    //                 <tr>
-    //                     <th>Brand id</th>
-    //                     <th>Brand name</th>
-    //                 </tr>
-    //                 </thead>
-    //                 <tbody>
-    //                 {
-    //                     this.state.brands.map(
-    //                         brand => {
-    //                             <tr key={brand.id}>
-    //                                 <td>{brand.id}</td>
-    //                                 <td>{brand.brand}</td>
-    //                             </tr>
-    //                         }
-    //                     )
-    //                 }
-    //                 </tbody>
-    //             </table>
-    //         </div>
-    //     )
-    // }
-
     render() {
         return (
             <div>
