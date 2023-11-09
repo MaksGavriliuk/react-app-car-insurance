@@ -1,6 +1,8 @@
 import ModelsPage from "./components/pages/ModelsPage";
 import { Button, Space, DatePicker, version } from 'antd';
 import BrandsPage from "./components/pages/BrandsPage";
+import {QR} from './components/qr'
+// import { Input, QRCode, Space } from 'antd';
 
 
 export function App() {
@@ -8,6 +10,7 @@ export function App() {
         <>
             <ModelsPage />
             <BrandsPage />
+            <QR />
         </>
     )
 }
