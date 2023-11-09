@@ -1,13 +1,15 @@
-import logo from './logo.svg';
-import './App.css';
-import ListBrandsComponent from "./components/ListBrandsComponent";
+import ModelsPage from "./components/pages/ModelsPage";
+import { Button, Space, DatePicker, version } from 'antd';
+import BrandsPage from "./components/pages/BrandsPage";
 
-function App() {
-  return (
-    <div className="container">
-      <ListBrandsComponent />
-    </div>
-  );
+
+export function App() {
+    return (
+        <>
+            <ModelsPage />
+            <BrandsPage />
+        </>
+    )
 }
 
 export default App;
