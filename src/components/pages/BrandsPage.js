@@ -1,13 +1,11 @@
-import React from 'react';
-import BrandsTable from '../Brand/BrandsTable';
+import {Typography} from 'antd';
+import BrandsTable from "../Brand/BrandsTable";
 
-function BrandsPage() {
+export default function BrandPage() {
     return (
         <>
-            <h1>Страница брендов</h1>
+            <Typography.Title level={1}>Бренды</Typography.Title>
             <BrandsTable/>
         </>
     );
 }
-
-export default BrandsPage;
