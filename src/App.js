@@ -1,16 +1,19 @@
 import ModelsPage from "./components/pages/ModelsPage";
 import { Button, Space, DatePicker, version } from 'antd';
 import BrandsPage from "./components/pages/BrandsPage";
+import 'react-toastify/dist/ReactToastify.css';
+
 import {QR} from './components/qr'
-// import { Input, QRCode, Space } from 'antd';
+import {ToastContainer} from "react-toastify";
 
 
 export function App() {
     return (
         <>
-            <ModelsPage />
+            <ToastContainer />
+            {/*<ModelsPage />*/}
             <BrandsPage />
-            <QR />
+            {/*<QR />*/}
         </>
     )
 }

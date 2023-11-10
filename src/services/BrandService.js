@@ -1,12 +1,42 @@
 import axios from 'axios';
 
-const ALL_BRANDS = 'http://localhost:8080/brands';
+class BrandService {
 
-export async function fetchBrands() {
-    try {
-        const response = await axios.get(ALL_BRANDS);
-        return response.data;
-    } catch (error) {
-        throw error;
+    async fetchBrands() {
+        try {
+            const response = await axios.get('http://localhost:8080/brands');
+            return response.data;
+        } catch (error) {
+            throw error;
+        }
+    }
+
+    async deleteBrand(id) {
+        try {
+            const response = await axios.delete(`http://localhost:8080/brands/${id}`);
+            return response.data;
+        } catch (error) {
+            throw error;
+        }
+    }
+
+    async updateBrand(brand) {
+        try {
+            const response = await axios.put(`http://localhost:8080/brands/${brand.id}`, brand);
+            return response.data;
+        } catch (error) {
+            throw error;
+        }
+    }
+
+    async saveBrand(brand) {
+        try {
+            const response = await axios.post(`http://localhost:8080/brands/create`, brand);
+            return response.data;
+        } catch (error) {
+            throw error;
+        }
     }
 }
+
+export default new BrandService();
