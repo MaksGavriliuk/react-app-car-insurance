@@ -1,5 +1,5 @@
 import React from 'react';
-import BrandsTable from '../BrandsTable';
+import BrandsTable from '../Brand/BrandsTable';
 
 function BrandsPage() {
     return (

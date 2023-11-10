@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import brandService from '../services/BrandService';
+import brandService from '../../services/BrandService';
 import {Table, Empty, Button, Form, Input, Modal, message, Spin} from 'antd';
 import {toast} from 'react-toastify';
 
@@ -16,7 +16,6 @@ export default function BrandsTable() {
         (async function getBrands() {
             try {
                 const data = await brandService.fetchBrands();
-                console.log(data);
                 setBrands(data);
                 setIsLoading(false);
             } catch (error) {
@@ -112,7 +111,10 @@ export default function BrandsTable() {
             key: 'actions',
             render: (text, record) => (
                 <>
-                    <Button onClick={() => handleEdit(record)} danger>
+                    <Button
+                        onClick={() => handleEdit(record)}
+                        style={{border: 'none', color: 'orange'}}
+                    >
                         Редактировать
                     </Button>
                     <Button danger type="text" onClick={() => handleDelete(record.id, record.brand)}>
@@ -159,7 +161,7 @@ export default function BrandsTable() {
             {isLoading ? (
                 <Spin/>
             ) : brands.length > 0 ? (
-                <Table dataSource={brands} columns={columns}/>
+                <Table dataSource={brands} columns={columns} pagination={false}/>
             ) : (
                 <Empty description="Список брендов пуст"/>
             )}
@@ -167,7 +169,6 @@ export default function BrandsTable() {
             <Button onClick={handleAdd} type="primary" style={{marginBottom: '16px'}}>
                 Добавить
             </Button>
-
         </>
     );
 
