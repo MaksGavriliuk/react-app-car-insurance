@@ -1,22 +1,22 @@
 import React, {useEffect, useState} from 'react';
-import brandService from '../../services/BrandService';
+import engineVolumeService from '../../services/EngineVolumeService';
 import {Table, Empty, Button, Form, Input, Modal, Spin} from 'antd';
 import {toast} from 'react-toastify';
 
+export default function EngineVolumeTable() {
 
-export default function BrandsTable() {
-
-    const [brands, setBrands] = useState([]);
+    const [engineVolumes, setEngineVolumes] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [editingRecord, setEditingRecord] = useState(null);
     const [form] = Form.useForm();
 
     useEffect(() => {
-        (async function getBrands() {
+        (async function getEngineVolumes() {
             try {
-                const data = await brandService.fetchBrands();
-                setBrands(data);
+                const data = await engineVolumeService.fetchEngineVolumes();
+                console.log(data);
+                setEngineVolumes(data);
                 setIsLoading(false);
             } catch (error) {
                 setIsLoading(false);
@@ -24,17 +24,17 @@ export default function BrandsTable() {
         })();
     }, []);
 
-    const handleDelete = async (id, brand) => {
+    const handleDelete = async (id, engineVolume) => {
         try {
-            await brandService.deleteBrand(id);
-            setBrands(prevBrands => prevBrands.filter(item => item.id !== id));
-            toast.success(`Бренд ${brand} успешно удалён`);
+            await engineVolumeService.deleteEngineVolume(id);
+            setEngineVolumes((prevEngineVolumes) => prevEngineVolumes.filter((item) => item.id !== id));
+            toast.success(`Объем двигателя ${engineVolume} успешно удален`);
         } catch (error) {
-            toast.error(`Не удалось удалить бренд: ${brand}`);
+            toast.error(`Не удалось удалить объем двигателя: ${engineVolume}`);
         }
     };
 
-    const handleEdit = record => {
+    const handleEdit = (record) => {
         form.setFieldsValue(record);
         setIsModalOpen(true);
         setEditingRecord(record);
@@ -43,24 +43,24 @@ export default function BrandsTable() {
     const handleFormSubmit = () => {
         form
             .validateFields()
-            .then(values => {
-                const updatedBrand = {...editingRecord, ...values};
-                brandService
-                    .updateBrand(updatedBrand)
+            .then((values) => {
+                const updatedEngineVolume = {...editingRecord, ...values};
+                engineVolumeService
+                    .updateEngineVolume(updatedEngineVolume)
                     .then(() => {
-                        setBrands(prevBrands =>
-                            prevBrands.map(item => (item.id === updatedBrand.id ? updatedBrand : item))
+                        setEngineVolumes((prevEngineVolumes) =>
+                            prevEngineVolumes.map((item) => (item.id === updatedEngineVolume.id ? updatedEngineVolume : item))
                         );
                         setIsModalOpen(false);
                         setEditingRecord(null);
-                        toast.success(`Бренд ${updatedBrand.brand} успешно отредактирован`);
+                        toast.success(`Объем двигателя ${updatedEngineVolume.engineVolume} успешно отредактирован`);
                     })
                     .catch(() => {
-                        toast.error(`Не удалось отредактировать бренд: ${updatedBrand.brand}`);
+                        toast.error(`Не удалось отредактировать объем двигателя: ${updatedEngineVolume.engineVolume}`);
                         handleCancel();
                     });
             })
-            .catch(() => toast.error('Не удалось отредактировать бренд'));
+            .catch(() => toast.error('Не удалось отредактировать объем двигателя'));
     };
 
     const handleCancel = () => {
@@ -70,7 +70,7 @@ export default function BrandsTable() {
     };
 
     const handleAdd = () => {
-        form.setFieldsValue({id: '', brand: ''});
+        form.setFieldsValue({id: '', engineVolume: ''});
         setIsModalOpen(true);
         setEditingRecord(null);
     };
@@ -78,21 +78,21 @@ export default function BrandsTable() {
     const handleSave = () => {
         form
             .validateFields()
-            .then(values => {
-                const newBrand = {brand: values.brand};
-                brandService
-                    .saveBrand(newBrand)
-                    .then(response => {
-                        setBrands(prevBrands => [...prevBrands, response]);
+            .then((values) => {
+                const newEngineVolume = {engineVolume: values.engineVolume};
+                engineVolumeService
+                    .saveEngineVolume(newEngineVolume)
+                    .then((response) => {
+                        setEngineVolumes(prevEngineVolumes => [...prevEngineVolumes, response]);
                         setIsModalOpen(false);
-                        toast.success(`Бренд ${response.brand} успешно добавлен`);
+                        toast.success(`Объем двигателя ${response.engineVolume} успешно добавлен`);
                     })
                     .catch(() => {
-                        toast.error(`Не удалось добавить бренд`);
+                        toast.error(`Не удалось добавить объем двигателя`);
                         handleCancel();
                     });
             })
-            .catch(() => toast.error('Не удалось добавить бренд'));
+            .catch(() => toast.error('Не удалось добавить объем двигателя'));
     };
 
     const columns = [
@@ -102,22 +102,19 @@ export default function BrandsTable() {
             key: 'id',
         },
         {
-            title: 'Бренд',
-            dataIndex: 'brand',
-            key: 'brand',
+            title: 'Объем двигателя',
+            dataIndex: 'engineVolume',
+            key: 'engineVolume',
         },
         {
             title: 'Действия',
             key: 'actions',
             render: (text, record) => (
                 <>
-                    <Button
-                        onClick={() => handleEdit(record)}
-                        style={{border: 'none', color: 'orange'}}
-                    >
+                    <Button onClick={() => handleEdit(record)} style={{border: 'none', color: 'orange'}}>
                         Редактировать
                     </Button>
-                    <Button danger type="text" onClick={() => handleDelete(record.id, record.brand)}>
+                    <Button danger type="text" onClick={() => handleDelete(record.id, record.engineVolume)}>
                         Удалить
                     </Button>
                 </>
@@ -125,7 +122,7 @@ export default function BrandsTable() {
         },
     ];
 
-    const modalTitle = editingRecord ? 'Редактирование бренда' : 'Добавление бренда';
+    const modalTitle = editingRecord ? 'Редактирование объема двигателя' : 'Добавление объема двигателя';
 
     return (
         <>
@@ -152,7 +149,11 @@ export default function BrandsTable() {
                     <Form.Item name="id" label="ID">
                         <Input disabled/>
                     </Form.Item>
-                    <Form.Item name="brand" label="Brand" rules={[{required: true, message: 'Введите бренд'}]}>
+                    <Form.Item
+                        name="engineVolume"
+                        label="Объем"
+                        rules={[{required: true, message: 'Введите объем'}]}
+                    >
                         <Input/>
                     </Form.Item>
                 </Form>
@@ -160,10 +161,10 @@ export default function BrandsTable() {
 
             {isLoading ? (
                 <Spin/>
-            ) : brands.length > 0 ? (
-                <Table dataSource={brands} columns={columns} pagination={false}/>
+            ) : engineVolumes.length > 0 ? (
+                <Table dataSource={engineVolumes} columns={columns} pagination={false}/>
             ) : (
-                <Empty description="Список брендов пуст"/>
+                <Empty description="Список объемов двигателя пуст"/>
             )}
 
             <Button onClick={handleAdd} type="primary" style={{marginBottom: '16px'}}>
@@ -171,5 +172,4 @@ export default function BrandsTable() {
             </Button>
         </>
     );
-
 }
