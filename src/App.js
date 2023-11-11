@@ -1,13 +1,12 @@
 import 'react-toastify/dist/ReactToastify.css';
 import {ToastContainer} from "react-toastify";
-import FuelTypeTable from "./components/FuelType/FuelTypeTable";
-import BrandPage from "./components/pages/BrandsPage";
+import InsuranceTypeTable from "./components/InsuranceType/InsuranceTypeTable";
 
 export default function App() {
     return (
         <>
             <ToastContainer/>
-            <BrandPage/>
+            <InsuranceTypeTable/>
         </>
     )
 }
