@@ -15,7 +15,6 @@ export default function EngineVolumeTable() {
         (async function getEngineVolumes() {
             try {
                 const data = await engineVolumeService.fetchEngineVolumes();
-                console.log(data);
                 setEngineVolumes(data);
                 setIsLoading(false);
             } catch (error) {
