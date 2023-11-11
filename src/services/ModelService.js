@@ -28,6 +28,16 @@ class ModelService {
             throw error;
         }
     }
+
+    async saveModel(model) {
+        try {
+            const response = await axios.post(`http://localhost:8080/models/create`, model);
+            return response.data;
+        } catch (error) {
+            throw error;
+        }
+    }
+
 }
 
 export default new ModelService();
