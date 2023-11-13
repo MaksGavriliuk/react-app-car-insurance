@@ -1,5 +1,5 @@
 import React from 'react';
-import ModelsTable from '../ModelsTable';
+import ModelsTable from '../Model/ModelsTable';
 
 function ModelsPage() {
     return (

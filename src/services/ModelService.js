@@ -22,7 +22,7 @@ class ModelService {
 
     async updateModel(model) {
         try {
-            const response = await axios.put(`http://localhost:8080/models/${model.id}`);
+            const response = await axios.put(`http://localhost:8080/models/${model.id}`, model);
             return response.data;
         } catch (error) {
             throw error;
