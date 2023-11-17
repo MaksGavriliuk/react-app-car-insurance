@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import { Button, Checkbox, Form, Input } from 'antd';
+import React, {useState} from 'react';
+import {Button, Form, Input} from 'antd';
 import authenticationService from '../../services/AuthenticationService';
-import { useNavigate } from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 
 export default function LoginForm() {
     const [error, setError] = useState(null); // Состояние для хранения ошибки
@@ -11,11 +11,9 @@ export default function LoginForm() {
         console.log(auth);
         authenticationService.login(auth)
             .then((response) => {
-                console.log(response)
-                const token = response.token;
-                localStorage.setItem('jwtToken', token); // Сохраняем токен в localStorage
-                console.log('Successful login');
-                navigate('/brands', { replace: true });
+                localStorage.setItem('jwtToken', response.token); // Сохраняем токен в localStorage
+                localStorage.setItem('user', JSON.stringify(response.user.user)); // Сохраняем токен в localStorage
+                navigate('/profile', {replace: true})
             })
             .catch((e) => {
                 console.log(e);
@@ -56,7 +54,7 @@ export default function LoginForm() {
                     },
                 ]}
             >
-                <Input />
+                <Input/>
             </Form.Item>
 
             <Form.Item
@@ -69,7 +67,7 @@ export default function LoginForm() {
                     },
                 ]}
             >
-                <Input.Password />
+                <Input.Password/>
             </Form.Item>
 
             {error && ( // Условный рендеринг ошибки
@@ -78,7 +76,7 @@ export default function LoginForm() {
                         offset: 8,
                         span: 16,
                     }}
-                    style={{ color: 'red' }}
+                    style={{color: 'red'}}
                 >
                     {error}
                 </Form.Item>
