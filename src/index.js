@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {Routes, Route, BrowserRouter} from 'react-router-dom';
 import BrandPage from "./components/pages/BrandsPage";
 import ModelsPage from "./components/pages/ModelsPage";
+import LoginForm from "./components/Authentication/LoginForm";
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -13,6 +13,7 @@ root.render(
   <React.StrictMode>
       <BrowserRouter>
           <Routes>
+              <Route path="/login" Component={LoginForm} />
               <Route path="/brands" Component={BrandPage} />
               <Route path="/models" Component={ModelsPage} />
           </Routes>

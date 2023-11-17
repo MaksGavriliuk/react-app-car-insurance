@@ -4,7 +4,9 @@ class BrandService {
 
     async fetchBrands() {
         try {
-            const response = await axios.get('http://localhost:8080/brands');
+            const token = localStorage.getItem('jwtToken');
+            const headers = token ? {Authorization: `Bearer ${token}`} : {};
+            const response = await axios.get('http://localhost:8080/brands', {headers});
             return response.data;
         } catch (error) {
             throw error;
