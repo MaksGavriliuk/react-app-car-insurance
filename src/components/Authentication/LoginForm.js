@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {Button, Form, Input} from 'antd';
 import authenticationService from '../../services/AuthenticationService';
 import {useNavigate} from 'react-router-dom';
+import axios from 'axios';
 
 export default function LoginForm() {
     const [error, setError] = useState(null); // Состояние для хранения ошибки
@@ -10,14 +11,16 @@ export default function LoginForm() {
     const onFinish = (auth) => {
         console.log(auth);
         authenticationService.login(auth)
-            .then((response) => {
-                localStorage.setItem('jwtToken', response.token); // Сохраняем токен в localStorage
-                localStorage.setItem('user', JSON.stringify(response.user.user)); // Сохраняем токен в localStorage
+            .then(response => {
+                console.log(response)
+                // localStorage.setItem('jwtToken', JSON.stringify(response.token));
+                // localStorage.setItem('user', JSON.stringify(response.user));
+                // axios.defaults.headers.common['Authorization'] = `Bearer ${response.token}`;
                 navigate('/profile', {replace: true})
             })
             .catch((e) => {
                 console.log(e);
-                setError('Неверный логин или пароль'); // Установка ошибки
+                setError('Неверный логин или пароль');
             });
     };
 
