@@ -1,15 +1,17 @@
 import React from 'react';
-import { Card, Typography, Col, Row } from 'antd';
+import {Card, Typography, Col, Row, Rate} from 'antd';
+import userService from '../../services/UserService';
+import UserCarsTable from "../Car/UserCarsTable";
 
 const { Title, Text } = Typography;
 
+
 export default function UserProfile() {
 
-    const user = JSON.parse(localStorage.getItem('user'))
+    const user = JSON.parse(localStorage.getItem('user'));
 
     return (
-        <>
-
+        <div>
             <Card>
                 <Title level={2}>Доброго времени суток, {user.name} {user.patronymic}!</Title>
             </Card>
@@ -25,8 +27,19 @@ export default function UserProfile() {
             </Row>
 
             <Title level={3}>Список машин</Title>
-            <Title level={3}>Ваши отзывы:</Title>
+            <UserCarsTable />
 
-        </>
+            <Title style={{textAlign: 'center'}} level={3}>Ваши отзывы:</Title>
+
+            <Row >
+                {user.feedbacks.slice(0, 5).map((feedback) => (
+                    <Col span={5} key={feedback.id}>
+                        <Card title={feedback.feedback}>
+                            <Rate allowHalf defaultValue={feedback.numberOfStars} disabled />
+                        </Card>
+                    </Col>
+                ))}
+            </Row>
+        </div>
     );
 }
