@@ -8,6 +8,7 @@ import BrandPage from "./components/pages/BrandsPage";
 import ModelsPage from "./components/pages/ModelsPage";
 import LoginForm from "./components/Authentication/LoginForm";
 import Profile from "./components/Profile";
+import InsuranceCalculation from "./components/pages/InsuranceCalculation";
 
 
 // axios.defaults.baseURL = 'http://localhost:8080'; // Установите базовый URL вашего сервера
@@ -27,6 +28,7 @@ root.render(
               <Route path="/brands" Component={BrandPage} />
               <Route path="/models" Component={ModelsPage} />
               <Route path="/profile" Component={Profile} />
+              <Route path="/calculate" Component={InsuranceCalculation} />
           </Routes>
       </BrowserRouter>
     {/*<App />*/}
