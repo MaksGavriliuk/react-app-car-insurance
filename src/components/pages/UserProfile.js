@@ -6,12 +6,14 @@ import UserCarsTable from "../Car/UserCarsTable";
 const { Title, Text } = Typography;
 
 
+
+
 export default function UserProfile() {
 
     const user = JSON.parse(localStorage.getItem('user'));
 
     return (
-        <div>
+        <>
             <Card>
                 <Title level={2}>Доброго времени суток, {user.name} {user.patronymic}!</Title>
             </Card>
@@ -40,6 +42,9 @@ export default function UserProfile() {
                     </Col>
                 ))}
             </Row>
-        </div>
+
+            <Contracts />
+
+        </>
     );
 }
