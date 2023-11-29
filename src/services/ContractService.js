@@ -20,6 +20,16 @@ class ContractService {
         }
     }
 
+    async fetchApprovedContracts() {
+        try {
+            const agent = JSON.parse(localStorage.getItem('user'));
+            const response = await axios.get(`http://localhost:8080/contracts/approved/${agent.id}`);
+            return response.data;
+        } catch (error) {
+            throw error;
+        }
+    }
+
 
     async deleteContract(id) {
         try {
