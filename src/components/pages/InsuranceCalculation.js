@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import ModalFormChooseCars from '../Car/ModalFormChooseCars';
-import { Button, DatePicker, Space } from 'antd';
-import { toast } from 'react-toastify';
+import {Button, DatePicker, Space} from 'antd';
+import {toast} from 'react-toastify';
 import userService from "../../services/UserService";
 import insuranceCalculateService from "../../services/InsuranceCalculateService";
 import dayjs from 'dayjs';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
 
 dayjs.extend(customParseFormat);
-const { RangePicker } = DatePicker;
+const {RangePicker} = DatePicker;
 
 export default function InsuranceCalculation() {
     const [selectedInsurance, setSelectedInsurance] = useState(null);
@@ -42,24 +42,21 @@ export default function InsuranceCalculation() {
         } else if (!selectedDates) {
             console.log('Пожалуйста, выберите даты');
         } else {
-            console.log(selectedDates)
             const formattedDates = selectedDates.map(date => date.format('YYYY-MM-DD'));
             const insuranceData = {
                 insuranceType: selectedInsurance,
                 carId: selectedCar.id,
                 userId: userService.getId(),
-                date1: formattedDates[0],
-                date2: formattedDates[1]
+                dates: formattedDates
             };
-            console.log('Полная информация:', insuranceData);
             insuranceCalculateService.calculate(insuranceData).then(r => console.log(r));
         }
     };
 
     const buttons = [
-        { name: 'ОСГОВТС', key: 'osgovts' },
-        { name: 'Зелёная карта', key: 'green-card' },
-        { name: 'Каско', key: 'casko' },
+        {name: 'ОСГОВТС', key: 'osgovts'},
+        {name: 'Зелёная карта', key: 'green-card'},
+        {name: 'Каско', key: 'casko'},
     ];
 
     return (
@@ -76,9 +73,9 @@ export default function InsuranceCalculation() {
                     {button.name}
                 </Button>
             ))}
-            <ModalFormChooseCars onCarSelect={handleCarSelection} />
+            <ModalFormChooseCars onCarSelect={handleCarSelection}/>
             <Space direction="vertical" size={12}>
-                <RangePicker disabledDate={disabledDate} onChange={handleDateSelection} />
+                <RangePicker disabledDate={disabledDate} onChange={handleDateSelection}/>
             </Space>
             <Button onClick={handleCalculate} type="button">
                 Рассчитать
