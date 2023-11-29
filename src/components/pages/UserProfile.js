@@ -2,7 +2,8 @@ import React from 'react';
 import {Card, Typography, Col, Row, Rate} from 'antd';
 import userService from '../../services/UserService';
 import UserCarsTable from "../Car/UserCarsTable";
-
+import ContractsTable from "../Contracts/ContractsTable";
+import contractServiceForUser from "../../services/ContractServiceForUser";
 const { Title, Text } = Typography;
 
 
@@ -43,7 +44,7 @@ export default function UserProfile() {
                 ))}
             </Row>
 
-            {/*<Contracts />*/}
+            <ContractsTable contractService={contractServiceForUser} />
 
         </>
     );
