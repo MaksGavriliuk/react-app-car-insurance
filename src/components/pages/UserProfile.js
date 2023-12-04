@@ -3,6 +3,7 @@ import {Card, Typography, Col, Row, Rate, Flex} from 'antd';
 import UserCarsTable from "../Car/UserCarsTable";
 import ContractsTable from "../Contracts/ContractsTable";
 import contractServiceForUser from "../../services/ContractServiceForUser";
+import Header from "../Header/Header";
 
 const {Title, Text} = Typography;
 
@@ -18,6 +19,7 @@ export default function UserProfile() {
 
     return (
         <>
+            <Header />
             <Card>
                 <Title level={2}>Доброго времени суток, {user.name} {user.patronymic}!</Title>
             </Card>

@@ -13,6 +13,7 @@ import NotApprovedContracts from "./components/Contracts/NotApprovedContracts";
 import ApprovedContracts from "./components/Contracts/ApprovedContracts";
 import LogoutForm from "./components/Authentication/LogoutForm";
 import AddCar from "./components/Car/AddCar";
+import StartPage from "./components/pages/StartPage";
 
 
 // axios.defaults.baseURL = 'http://localhost:8080'; // Установите базовый URL вашего сервера
@@ -28,6 +29,7 @@ root.render(
   <React.StrictMode>
       <BrowserRouter>
           <Routes>
+              <Route path="/" Component={StartPage} />
               <Route path="/login" Component={LoginForm} />
               <Route path="/logout" Component={LogoutForm} />
               <Route path="/brands" Component={BrandPage} />
