@@ -1,0 +1,24 @@
+.insurance-calculator-card-container {
+    display: flex;
+    justify-content: center;
+}
+
+.card {
+    width: 70%;
+}
+
+.card-content {
+    display: flex;
+}
+
+.text-content {
+    flex: 1;
+}
+
+.title {
+    margin-bottom: 16px;
+}
+
+.image-content {
+    max-width: 400px;
+}
