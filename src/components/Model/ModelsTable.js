@@ -94,6 +94,7 @@ export default function ModelsTable() {
             .validateFields()
             .then((values) => {
                 const newModel = { model: values.model, brandId: values.brandId };
+                console.log(newModel)
                 modelService
                     .saveModel(newModel)
                     .then((response) => {

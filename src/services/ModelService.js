@@ -38,6 +38,15 @@ class ModelService {
         }
     }
 
+    async fetchModelsByBrand(brand) {
+        try {
+            const response = await axios.get(`http://localhost:8080/models?brand=${brand}`);
+            return response.data;
+        } catch (error) {
+            throw error;
+        }
+    }
+
 }
 
 export default new ModelService();

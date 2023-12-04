@@ -4,36 +4,27 @@ class BrandService {
 
     async fetchBrands() {
         try {
-            const token = JSON.parse(localStorage.getItem('jwtToken'))
-            const requestOptions = {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`
-                },
-                // body: JSON.stringify(auth)
-            };
-
-            fetch('http://localhost:8080/brands', requestOptions)
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Error sending request');
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    // Обработка успешного ответа
-                    console.log(data);
-                    // localStorage.setItem('jwtToken', JSON.stringify(data.token));
-                    // localStorage.setItem('user', JSON.stringify(data.user));
-                    // navigate('/profile', {replace: true});
-                    return data;
-                })
-            // const token = JSON.parse(localStorage.getItem('jwtToken'));
-            // console.log(token)
-            // await this.setHeaders()
-            // // const headers = token ? {Authorization: `Bearer ${token}`} : {};
-            // const response = await axios.get('http://localhost:8080/brands');
+            const response = await axios.get('http://localhost:8080/brands')
+            return response.data;
+            // const token = JSON.parse(localStorage.getItem('jwtToken'))
+            // const requestOptions = {
+            //     method: 'GET',
+            //     headers: {
+            //         'Content-Type': 'application/json',
+            //         'Authorization': `Bearer ${token}`
+            //     },
+            // };
+            //
+            // fetch('http://localhost:8080/brands', requestOptions)
+            //     .then(response => {
+            //         if (!response.ok) {
+            //             throw new Error('Error sending request');
+            //         }
+            //         return response.json();
+            //     })
+            //     .then(data => {
+            //         return data;
+            //     })
         } catch (error) {
             throw error;
         }

@@ -1,17 +1,20 @@
 import React from 'react';
-import {Card, Typography, Col, Row, Rate} from 'antd';
-import userService from '../../services/UserService';
+import {Card, Typography, Col, Row, Rate, Flex} from 'antd';
 import UserCarsTable from "../Car/UserCarsTable";
 import ContractsTable from "../Contracts/ContractsTable";
 import contractServiceForUser from "../../services/ContractServiceForUser";
-const { Title, Text } = Typography;
 
-
+const {Title, Text} = Typography;
 
 
 export default function UserProfile() {
 
     const user = JSON.parse(localStorage.getItem('user'));
+
+    const boxStyle = {
+        width: '100%',
+        height: 120,
+    };
 
     return (
         <>
@@ -30,21 +33,22 @@ export default function UserProfile() {
             </Row>
 
             <Title level={3}>Список машин</Title>
-            <UserCarsTable />
+            <UserCarsTable/>
 
             <Title style={{textAlign: 'center'}} level={3}>Ваши отзывы:</Title>
 
-            <Row >
+            <Flex style={boxStyle} justify='space-around' align='center'>
                 {user.feedbacks.slice(0, 5).map((feedback) => (
-                    <Col span={5} key={feedback.id}>
+                    <Col span={4} key={feedback.id}>
                         <Card title={feedback.feedback}>
-                            <Rate allowHalf defaultValue={feedback.numberOfStars} disabled />
+                            <Rate allowHalf defaultValue={feedback.numberOfStars} disabled/>
                         </Card>
                     </Col>
                 ))}
-            </Row>
+            </Flex>
 
-            <ContractsTable contractService={contractServiceForUser} />
+
+            <ContractsTable contractService={contractServiceForUser}/>
 
         </>
     );

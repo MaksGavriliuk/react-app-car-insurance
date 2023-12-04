@@ -2,7 +2,7 @@ import axios from 'axios';
 
 class ContractService {
 
-    async fetchEngineVolumes() {
+    async fetchContracts() {
         try {
             const user = JSON.parse(localStorage.getItem('user'))
             const userId = user.id

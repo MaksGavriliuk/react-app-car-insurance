@@ -11,6 +11,8 @@ import Profile from "./components/Profile";
 import InsuranceCalculation from "./components/pages/InsuranceCalculation";
 import NotApprovedContracts from "./components/Contracts/NotApprovedContracts";
 import ApprovedContracts from "./components/Contracts/ApprovedContracts";
+import LogoutForm from "./components/Authentication/LogoutForm";
+import AddCar from "./components/Car/AddCar";
 
 
 // axios.defaults.baseURL = 'http://localhost:8080'; // Установите базовый URL вашего сервера
@@ -27,6 +29,7 @@ root.render(
       <BrowserRouter>
           <Routes>
               <Route path="/login" Component={LoginForm} />
+              <Route path="/logout" Component={LogoutForm} />
               <Route path="/brands" Component={BrandPage} />
               <Route path="/models" Component={ModelsPage} />
               <Route path="/contracts" Component={ModelsPage} />
@@ -34,6 +37,9 @@ root.render(
               <Route path="/contracts/approved" Component={ApprovedContracts} />
               <Route path="/profile" Component={Profile} />
               <Route path="/calculate" Component={InsuranceCalculation} />
+
+              <Route path="/add-car" Component={AddCar} />
+
           </Routes>
       </BrowserRouter>
     {/*<App />*/}

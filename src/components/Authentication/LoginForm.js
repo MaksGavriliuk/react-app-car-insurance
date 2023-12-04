@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import {Button, Form, Input} from 'antd';
 import authenticationService from '../../services/AuthenticationService';
 import {useNavigate} from 'react-router-dom';
-import axios from 'axios';
 
 export default function LoginForm() {
     const [error, setError] = useState(null); // Состояние для хранения ошибки
