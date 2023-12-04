@@ -1,0 +1,33 @@
+
+/*body {*/
+/*    display: flex;*/
+/*    justify-content: center;*/
+/*    align-items: center;*/
+/*    height: 100vh; !* Устанавливаем высоту на всю видимую область страницы *!*/
+/*    margin: 0 10% 0 10%; !* Убираем отступы у body *!*/
+/*}*/
+
+.article-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+}
+
+.jumbotron {
+    background-color: white;
+    margin-left: 3rem;
+}
+
+.montserrat {
+    /* Define the font-family, font-size, and other styles for the "montserrat" class */
+}
+
+.header {
+    margin-top: -4vh;
+    margin-bottom: 3rem;
+}
+
+.lead {
+    margin-top: -2rem;
+}

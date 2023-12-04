@@ -14,6 +14,9 @@ import ApprovedContracts from "./components/Contracts/ApprovedContracts";
 import LogoutForm from "./components/Authentication/LogoutForm";
 import AddCar from "./components/Car/AddCar";
 import StartPage from "./components/pages/StartPage";
+import OSGOVTS from "./components/pages/InsuranceArticles/OSGOVTS";
+import Casko from "./components/pages/InsuranceArticles/Casko";
+import GreenCard from "./components/pages/InsuranceArticles/GreenCard";
 
 
 // axios.defaults.baseURL = 'http://localhost:8080'; // Установите базовый URL вашего сервера
@@ -41,6 +44,11 @@ root.render(
               <Route path="/calculate" Component={InsuranceCalculation} />
 
               <Route path="/add-car" Component={AddCar} />
+
+              <Route path='/osgovts' Component={OSGOVTS} />
+              <Route path='/casko' Component={Casko} />
+              <Route path='/green-card' Component={GreenCard} />
+
 
           </Routes>
       </BrowserRouter>
