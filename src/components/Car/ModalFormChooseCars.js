@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { Card, Modal } from 'antd';
+import {Button, Card, Modal, message} from 'antd';
 import userService from '../../services/UserService';
+import {useNavigate} from "react-router-dom";
 
 export default function ModalFormChooseCars({ onCarSelect }) {
+
     const [cars, setCars] = useState([]);
     const [selectedCar, setSelectedCar] = useState(null);
     const [modalVisible, setModalVisible] = useState(false);
+    const navigate = useNavigate()
 
     useEffect(() => {
         (async function fetchCars() {
@@ -20,6 +23,7 @@ export default function ModalFormChooseCars({ onCarSelect }) {
 
     const handleCardClick = (car) => {
         setSelectedCar(car);
+        message.success('Машина выбрана')
         onCarSelect(car); // Вызов пропа onCarSelect с выбранной машиной
         handleModalClose(); // Закрытие модального окна после выбора машины
     };
@@ -38,6 +42,10 @@ export default function ModalFormChooseCars({ onCarSelect }) {
         onCarSelect(selectedCar); // Вызов пропа onCarSelect с выбранной машиной
         handleModalClose(); // Закрытие модального окна после выбора машины
     };
+
+    const addCar = () => {
+        navigate('/add-car')
+    }
 
     return (
         <>
@@ -61,6 +69,7 @@ export default function ModalFormChooseCars({ onCarSelect }) {
                         />
                     </Card>
                 ))}
+                <Button onClick={addCar}>Добавить машину</Button>
             </Modal>
         </>
     );
