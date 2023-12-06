@@ -188,7 +188,7 @@ export default function ModelsTable() {
                         rules={[{ required: true, message: 'Выберите бренд' }]}
                     >
                         <Select placeholder="Выберите бренд">
-                            {brands.map((brand) => (
+                            {brands.map(brand => (
                                 <Option key={brand.id} value={brand.id}>
                                     {brand.brand}
                                 </Option>

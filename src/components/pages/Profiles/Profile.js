@@ -1,7 +1,7 @@
 import React from 'react';
-import UserProfile from "./pages/UserProfile";
-import AdminProfile from "./pages/AdminProfile";
-import InsuranceAgentProfile from "./pages/InsuranceAgentProfile";
+import UserProfile from "./UserProfile";
+import AdminProfile from "./AdminProfile";
+import InsuranceAgentProfile from "./InsuranceAgentProfile";
 
 
 export default function Profile() {

@@ -9,11 +9,8 @@ export default function StartPage() {
     return (
         <>
             <Header/>
-
             <InsuranceCalculatorCard/>
-
             <GoogleMaps />
-
             <ScrollToTopButton />
 
         </>

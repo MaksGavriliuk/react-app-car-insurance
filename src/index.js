@@ -7,7 +7,7 @@ import {Routes, Route, BrowserRouter} from 'react-router-dom';
 import BrandPage from "./components/pages/BrandsPage";
 import ModelsPage from "./components/pages/ModelsPage";
 import LoginForm from "./components/Authentication/LoginForm";
-import Profile from "./components/Profile";
+import Profile from "./components/pages/Profiles/Profile";
 import InsuranceCalculation from "./components/pages/InsuranceCalculation";
 import NotApprovedContracts from "./components/Contracts/NotApprovedContracts";
 import ApprovedContracts from "./components/Contracts/ApprovedContracts";
@@ -18,6 +18,7 @@ import OSGOVTS from "./components/pages/InsuranceArticles/OSGOVTS";
 import Casko from "./components/pages/InsuranceArticles/Casko";
 import GreenCard from "./components/pages/InsuranceArticles/GreenCard";
 import RegistrationForm from "./components/Authentication/RegistrationForm";
+import AddFeedbackPage from "./components/pages/AddFeeadbackPage";
 
 
 // axios.defaults.baseURL = 'http://localhost:8080'; // Установите базовый URL вашего сервера
@@ -50,6 +51,9 @@ root.render(
               <Route path='/osgovts' Component={OSGOVTS} />
               <Route path='/casko' Component={Casko} />
               <Route path='/green-card' Component={GreenCard} />
+
+
+              <Route path='/add-feedback' Component={AddFeedbackPage} />
 
 
           </Routes>
