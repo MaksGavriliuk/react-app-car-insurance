@@ -20,6 +20,7 @@ import GreenCard from "./components/pages/InsuranceArticles/GreenCard";
 import RegistrationForm from "./components/Authentication/RegistrationForm";
 import AddFeedbackPage from "./components/pages/AddFeeadbackPage";
 import EngineVolumesPage from "./components/pages/EngineVolumesPage";
+import FuelTypesPage from "./components/pages/FuelTypesPage";
 
 
 // axios.defaults.baseURL = 'http://localhost:8080'; // Установите базовый URL вашего сервера
@@ -42,6 +43,7 @@ root.render(
               <Route path="/brands" Component={BrandPage} />
               <Route path="/models" Component={ModelsPage} />
               <Route path="/engine-volumes" Component={EngineVolumesPage} />
+              <Route path="/fuel-types" Component={FuelTypesPage} />
               <Route path="/contracts" Component={ModelsPage} />
               <Route path="/contracts/not-approved" Component={NotApprovedContracts} />
               <Route path="/contracts/approved" Component={ApprovedContracts} />
