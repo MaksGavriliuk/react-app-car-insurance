@@ -59,6 +59,17 @@ class ContractService {
             throw error;
         }
     }
+
+    async statistic(contractFilter) {
+        try {
+            const response = await axios.post('http://localhost:8080/contracts/statistic', contractFilter);
+            return response.data;
+        } catch (error) {
+            throw error;
+        }
+    }
+
+
     //
     // async saveEngineVolume(engineVolume) {
     //     try {

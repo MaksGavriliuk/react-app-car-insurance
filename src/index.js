@@ -20,6 +20,7 @@ import RegistrationForm from "./components/Authentication/RegistrationForm";
 import AddFeedbackPage from "./components/pages/AddFeeadbackPage";
 import EngineVolumesPage from "./components/pages/EngineVolumesPage";
 import FuelTypesPage from "./components/pages/FuelTypesPage";
+import ContractsPage from "./components/pages/Contracts/ContractsPage";
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -35,6 +36,7 @@ root.render(
               <Route path="/models" Component={ModelsPage} />
               <Route path="/engine-volumes" Component={EngineVolumesPage} />
               <Route path="/fuel-types" Component={FuelTypesPage} />
+              <Route path="/contracts" Component={ContractsPage} />
               <Route path="/contracts/not-approved" Component={NotApprovedContracts} />
               <Route path="/contracts/approved" Component={ApprovedContracts} />
               <Route path="/profile" Component={Profile} />
