@@ -1,10 +1,9 @@
 import React from 'react';
 import {Card, Typography, Col, Row, Rate, Flex, Button} from 'antd';
 import UserCarsTable from "../../Car/UserCarsTable";
-import ContractsTable from "../../Contracts/ContractsTable";
-import contractServiceForUser from "../../../services/ContractServiceForUser";
 import Header from "../../Header/Header";
 import {useNavigate} from "react-router-dom";
+import UserContractsTable from "../../Contracts/UserContractsTable";
 
 const {Title, Text} = Typography;
 
@@ -20,9 +19,7 @@ export default function UserProfile() {
         height: 120,
     };
 
-    const handleAddFeedback = () => {
-        navigate('/add-feedback')
-    }
+    const handleAddFeedback = () => navigate('/add-feedback');
 
     return (
         <>
@@ -47,7 +44,7 @@ export default function UserProfile() {
 
             {user.feedbacks.length > 0 ? (
                 <>
-                    <Title style={{ textAlign: 'center' }} level={3}>Ваши отзывы:</Title>
+                    <Title style={{textAlign: 'center'}} level={3}>Ваши отзывы:</Title>
                     <Flex style={boxStyle} justify='space-around' align='center'>
                         {user.feedbacks.slice(0, 5).map((feedback) => (
                             <Col span={4} key={feedback.id}>
@@ -62,7 +59,7 @@ export default function UserProfile() {
                 <Button type="primary" onClick={handleAddFeedback}>Добавить отзыв</Button>
             )}
 
-            <ContractsTable contractService={contractServiceForUser}/>
+            <UserContractsTable/>
 
         </>
     );
