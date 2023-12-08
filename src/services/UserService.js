@@ -11,6 +11,15 @@ class UserService {
         }
     }
 
+    async fetchUserById(userId) {
+        try {
+            const response = await axios.get(`http://localhost:8080/users/${this.getId()}`);
+            return response.data;
+        } catch (error) {
+            throw  error;
+        }
+    }
+
     getUser() {
         const user = JSON.parse(localStorage.getItem('user'))
         if (user !== null)

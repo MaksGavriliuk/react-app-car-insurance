@@ -13,7 +13,7 @@ class FeedbackService {
 
     async saveFeedback(feedback) {
         try {
-            const response = await axios.post('http://localhost:8080/feedback/create', feedback);
+            const response = await axios.post('http://localhost:8080/feedbacks/create', feedback);
             return response.data;
         } catch (error) {
             throw error;
