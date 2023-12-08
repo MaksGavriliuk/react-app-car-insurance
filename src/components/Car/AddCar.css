@@ -58,3 +58,41 @@
 .car-modal .car-details {
     width: 100%;
 }
+
+.car-modal .ant-form-item {
+    width: 30%;
+    margin-right: 10px;
+}
+
+.input-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+
+.car-modal {
+    width: 60%;
+    margin: 0 auto;
+}
+
+.car-modal h2 {
+    text-align: center;
+}
+
+.car-modal .ant-form-item {
+    margin-bottom: 16px;
+}
+
+.car-modal .ant-select,
+.car-modal .ant-input-number,
+.car-modal .ant-picker {
+    width: 100%;
+}
+
+.car-modal .ant-btn {
+    width: 200px;
+}
+
+.car-modal .car-details {
+    width: 100%;
+}
