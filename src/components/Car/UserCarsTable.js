@@ -67,7 +67,7 @@ const UserCarsTable = () => {
         },
     ];
 
-    return <Table dataSource={cars} columns={columns} onChange={handleChange} pagination={false}/>;
+    return <Table dataSource={cars} columns={columns} onChange={handleChange} pagination={{pageSize: 5}}/>;
 };
 
 export default UserCarsTable;

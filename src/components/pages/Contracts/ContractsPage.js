@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import ContractFilterForm from "./ContractFilterForm";
 import contractService from "../../../services/ContractService";
 import {Empty, message, Table} from "antd";
+import AgentHeader from "../../Header/AgentHeader";
 
 
 export default function ContractsPage() {

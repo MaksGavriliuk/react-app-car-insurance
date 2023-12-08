@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { Table, Empty, Spin } from 'antd';
+import React, {useEffect, useState} from 'react';
+import {Table, Empty, Spin} from 'antd';
 import contractService from "../../services/ContractServiceForUser";
 
 
@@ -95,11 +95,11 @@ export default function UserContractsTable() {
         <>
 
             {isLoading ? (
-                <Spin />
+                <Spin/>
             ) : contracts.length > 0 ? (
-                <Table dataSource={contracts} columns={columns} pagination={false} />
+                <Table dataSource={contracts} columns={columns} pagination={{pageSize:5}}/>
             ) : (
-                <Empty description="Список контрактов пуст" />
+                <Empty description="Список контрактов пуст"/>
             )}
 
         </>

@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Card, Typography, Col, Row, Rate, Button} from 'antd';
+import {Card, Typography, Col, Row, Rate, Button, Space} from 'antd';
 import UserCarsTable from "../../Car/UserCarsTable";
 import Header from "../../Header/Header";
 import {useNavigate} from "react-router-dom";
@@ -67,7 +67,8 @@ export default function UserProfile() {
                         <Row justify='space-around' align='center'>
                             {user.feedbacks.slice(0, 5).map((feedback) => (
                                 <Col span={4} key={feedback.id}>
-                                    <Card title={feedback.feedback}>
+                                    <Card>
+                                        <Text>{feedback.feedback}</Text>
                                         <Rate allowHalf defaultValue={feedback.numberOfStars} disabled/>
                                     </Card>
                                 </Col>
