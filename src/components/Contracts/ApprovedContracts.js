@@ -25,29 +25,55 @@ export default function ApprovedContracts() {
             key: 'id',
         },
         {
-            title: 'Тип',
-            dataIndex: 'insuranceType.insuranceType',
-            key: 'type',
+            title: 'Марка',
+            dataIndex: ['userCar', 'car', 'model', 'brand', 'brand'],
+            key: 'brand',
         },
         {
-            title: 'ID страхователя',
-            dataIndex: 'userCar.user.id',
+            title: 'Объём двигателя',
+            dataIndex: ['userCar', 'car', 'engineVolume', 'engineVolume'],
+            key: 'engineVolume',
+        },
+        {
+            title: 'Тип топлива',
+            dataIndex: ['userCar', 'car', 'fuelType', 'fuelType'],
+            key: 'fuelType',
+        },
+        {
+            title: 'ID пользователя',
+            dataIndex: ['userCar', 'user', 'id'],
             key: 'userId',
         },
         {
-            title: 'ID машины',
-            dataIndex: 'userCar.car.id',
-            key: 'carId',
+            title: 'ID страхователя',
+            dataIndex: ['insuranceAgent', 'id'],
+            key: 'insuranceAgentId',
+        },
+        {
+            title: 'Тип страховки',
+            dataIndex: ['insuranceType', 'insuranceType'],
+            key: 'insuranceType',
         },
         {
             title: 'Дата начала',
             dataIndex: 'startDate',
             key: 'startDate',
+            render: (date) => {
+                return new Date(date).toLocaleDateString();
+            },
         },
         {
-            title: 'Дата конца',
+            title: 'Дата окончания',
             dataIndex: 'endDate',
             key: 'endDate',
+            render: (date) => {
+                return new Date(date).toLocaleDateString();
+            },
+        },
+        {
+            title: 'Тип страховки',
+            dataIndex: ['insuranceType', 'insuranceType'],
+            key: 'insuranceType',
         },
         {
             title: 'Стоимость',
@@ -55,11 +81,10 @@ export default function ApprovedContracts() {
             key: 'amount',
         },
         {
-            title: 'Страховая выплата',
+            title: 'Величина выплаты',
             dataIndex: 'payoutAmount',
             key: 'payoutAmount',
-        },
-        {
+        }, {
             title: 'Статус',
             dataIndex: 'status',
             key: 'status',

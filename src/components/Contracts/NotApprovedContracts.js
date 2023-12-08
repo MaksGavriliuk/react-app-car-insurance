@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import contractService from '../../services/ContractService';
-import {Table, Empty, Button, Modal, Spin} from 'antd';
-import { ExclamationCircleOutlined } from '@ant-design/icons';
-import { toast } from 'react-toastify';
+import insuranceAgentsService from "../../services/InsuranceAgentsService";
+import {Table, Empty, Button, Modal, Spin, message} from 'antd';
+import {ExclamationCircleOutlined} from '@ant-design/icons';
+import {toast} from 'react-toastify';
+
 
 export default function NotApprovedContracts() {
     const [contracts, setContracts] = useState([]);
@@ -24,11 +26,18 @@ export default function NotApprovedContracts() {
 
     const handleApprove = async (contract) => {
         try {
-            await contractService.updateContract(contract);
-            toast.success(`Страховка с ID ${contract.id} одобрена`);
-            setContracts((prevContracts) =>
-                prevContracts.filter((item) => item.id !== contract.id)
-            );
+            await contractService.updateContract(contract)
+                .then((contract) => {
+                    insuranceAgentsService.calculatePremium(contract)
+                        .then((premium) => {
+                            setContracts((prevContracts) =>
+                                prevContracts.filter((item) => item.id !== contract.id)
+                            );
+                            message.success(`Страховка одобрена. Премия составила ${premium}$`);
+                        })
+                        .catch(() => message.error('Не удалось рассчитать премию'))
+                })
+                .catch(() => message.error('Не удалось одобрить страховку'))
         } catch (error) {
             toast.error(`Не удалось одобрить страховку с ID ${contract.id}`);
         }
@@ -76,7 +85,7 @@ export default function NotApprovedContracts() {
         if (selectedContract) {
             Modal.confirm({
                 title: 'Удаление страховки',
-                icon: <ExclamationCircleOutlined />,
+                icon: <ExclamationCircleOutlined/>,
                 content: `Вы действительно хотите удалить страховку с ID ${selectedContract.id}?`,
                 okText: 'Удалить',
                 cancelText: 'Отмена',
@@ -127,16 +136,16 @@ export default function NotApprovedContracts() {
             </Modal>
 
             {isLoading ? (
-                <Spin />
+                <Spin/>
             ) : contracts.length > 0 ? (
                 <Table
                     dataSource={contracts}
                     columns={columns}
                     pagination={false}
-                    expandable={{ expandedRowRender }}
+                    expandable={{expandedRowRender}}
                 />
             ) : (
-                <Empty description="Список неодобренных страховок пуст" />
+                <Empty description="Список неодобренных страховок пуст"/>
             )}
         </>
     );
