@@ -4,17 +4,14 @@ import authenticationService from '../../services/AuthenticationService';
 import {useNavigate} from 'react-router-dom';
 
 export default function LoginForm() {
-    const [error, setError] = useState(null); // Состояние для хранения ошибки
-    const navigate = useNavigate(); // Перемещаем вызов useNavigate за пределы обратного вызова
+    const [error, setError] = useState(null);
+    const navigate = useNavigate();
 
     const onFinish = (auth) => {
         console.log(auth);
         authenticationService.login(auth)
             .then(response => {
                 console.log(response)
-                // localStorage.setItem('jwtToken', JSON.stringify(response.token));
-                // localStorage.setItem('user', JSON.stringify(response.user));
-                // axios.defaults.headers.common['Authorization'] = `Bearer ${response.token}`;
                 navigate('/profile', {replace: true})
             })
             .catch((e) => {
@@ -30,9 +27,7 @@ export default function LoginForm() {
     return (
         <Form
             name="basic"
-            labelCol={{
-                span: 8,
-            }}
+            labelCol={{ span: 8,}}
             wrapperCol={{
                 span: 16,
             }}

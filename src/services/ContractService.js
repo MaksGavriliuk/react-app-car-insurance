@@ -80,6 +80,15 @@ class ContractService {
     //     }
     // }
 
+    async saveContract(contract) {
+        try {
+            console.log(contract)
+            const response = await axios.post('http://localhost:8080/contracts/create', contract);
+            return response.data;
+        } catch (error) {
+            throw error;
+        }
+    }
 }
 
 export default new ContractService();
