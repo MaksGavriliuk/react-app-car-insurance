@@ -1,0 +1,36 @@
+.login-form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+}
+
+.login-form {
+    width: 400px;
+    padding: 40px;
+    background-color: #f0f2f5;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.login-form-title {
+    text-align: center;
+    margin-bottom: 24px;
+    font-size: 24px;
+}
+
+.login-form-item {
+    text-align: center;
+    margin-bottom: 16px;
+}
+
+.login-form-error {
+    color: red;
+    margin-bottom: 16px;
+}
+
+.login-form-button {
+    width: 100%;
+    text-align: center;
+}

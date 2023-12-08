@@ -1,21 +1,20 @@
-import React, {useState} from 'react';
-import {Button, Form, Input} from 'antd';
+import React, { useState } from 'react';
+import { Button, Form, Input } from 'antd';
+import { useNavigate } from 'react-router-dom';
+import './Authentication.css';
 import authenticationService from '../../services/AuthenticationService';
-import {useNavigate} from 'react-router-dom';
 
-export default function LoginForm() {
+const LoginForm = () => {
     const [error, setError] = useState(null);
     const navigate = useNavigate();
 
     const onFinish = (auth) => {
-        console.log(auth);
-        authenticationService.login(auth)
-            .then(response => {
-                console.log(response)
-                navigate('/profile', {replace: true})
+        authenticationService
+            .login(auth)
+            .then((response) => {
+                navigate('/profile', { replace: true });
             })
             .catch((e) => {
-                console.log(e);
                 setError('Неверный логин или пароль');
             });
     };
@@ -25,70 +24,61 @@ export default function LoginForm() {
     };
 
     return (
-        <Form
-            name="basic"
-            labelCol={{ span: 8,}}
-            wrapperCol={{
-                span: 16,
-            }}
-            style={{
-                maxWidth: 600,
-            }}
-            initialValues={{
-                remember: true,
-            }}
-            onFinish={onFinish}
-            onFinishFailed={onFinishFailed}
-            autoComplete="off"
-        >
-            <Form.Item
-                label="Логин"
-                name="login"
-                rules={[
-                    {
-                        required: true,
-                        message: 'Введите логин!',
-                    },
-                ]}
-            >
-                <Input/>
-            </Form.Item>
-
-            <Form.Item
-                label="Password"
-                name="password"
-                rules={[
-                    {
-                        required: true,
-                        message: 'Please input your password!',
-                    },
-                ]}
-            >
-                <Input.Password/>
-            </Form.Item>
-
-            {error && ( // Условный рендеринг ошибки
-                <Form.Item
-                    wrapperCol={{
-                        offset: 8,
-                        span: 16,
-                    }}
-                    style={{color: 'red'}}
-                >
-                    {error}
-                </Form.Item>
-            )}
-
-            <Form.Item
-                wrapperCol={{
-                    offset: 8,
-                    span: 16,
+        <div className="login-form-container">
+            <Form
+                name="basic"
+                labelCol={{ span: 8 }}
+                wrapperCol={{ span: 16 }}
+                className="login-form"
+                initialValues={{
+                    remember: true,
                 }}
+                onFinish={onFinish}
+                onFinishFailed={onFinishFailed}
+                autoComplete="off"
             >
-                <Button type="primary" htmlType="submit">
-                    Submit
-                </Button>
-            </Form.Item>
-        </Form>
+                <h2 className="login-form-title">Вход</h2>
+
+                <Form.Item
+                    name="login"
+                    rules={[
+                        {
+                            required: true,
+                            message: 'Введите логин!',
+                        },
+                    ]}
+                    className="login-form-item"
+                >
+                    <Input placeholder="Введите ваш логин" />
+                </Form.Item>
+
+                <Form.Item
+                    name="password"
+                    rules={[
+                        {
+                            required: true,
+                            message: 'Введите пароль!',
+                        },
+                    ]}
+                    className="login-form-item"
+                >
+                    <Input.Password placeholder="Введите ваш пароль" />
+                </Form.Item>
+
+                {error && (
+                    <Form.Item wrapperCol={{ offset: 8, span: 16 }} className="login-form-error">
+                        {error}
+                    </Form.Item>
+                )}
+
+                <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
+                    <Button type="primary" htmlType="submit" className="login-form-button">
+                        Войти
+                    </Button>
+                </Form.Item>
+            </Form>
+        </div>
     );
-}
+};
+
+export default LoginForm;
