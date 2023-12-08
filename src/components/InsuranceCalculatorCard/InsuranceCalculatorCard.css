@@ -1,6 +1,8 @@
 .insurance-calculator-card-container {
     display: flex;
     justify-content: center;
+    align-items: center;
+    margin-top: 10vh;
 }
 
 .card {
@@ -9,16 +11,32 @@
 
 .card-content {
     display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .text-content {
     flex: 1;
+    padding: 16px;
 }
 
 .title {
     margin-bottom: 16px;
 }
 
+.text-row {
+    margin-bottom: 8px; /* Increase the margin-bottom value for more spacing between rows */
+}
+
+.link {
+    color: #1890ff;
+}
+
 .image-content {
-    max-width: 400px;
+    width: 300px;
+    padding: 16px;
+}
+
+.image-content img {
+    width: 100%;
 }
