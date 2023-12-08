@@ -1,30 +1,29 @@
-import React, {useState} from 'react';
-import {Menu} from 'antd';
-import {HomeOutlined, DollarOutlined, QuestionCircleOutlined, UserOutlined, DownOutlined} from '@ant-design/icons';
-import {Link} from 'react-router-dom';
+import React, { useState } from 'react';
+import { Menu } from 'antd';
+import { HomeOutlined, DollarOutlined, QuestionCircleOutlined, UserOutlined, DownOutlined } from '@ant-design/icons';
+import { Link } from 'react-router-dom';
 import './Header.css';
 
-const {SubMenu} = Menu;
+const { SubMenu } = Menu;
 
-const Header = () => {
+const HeaderProfile = () => {
     const [selectedMenuKey, setSelectedMenuKey] = useState('home');
 
-    const handleMenuSelect = ({key}) => {
+    const handleMenuSelect = ({ key }) => {
         setSelectedMenuKey(key);
     };
 
     return (
         <div className="header-container">
-            <div className="header-wrapper">
-                <Menu mode="horizontal" selectedKeys={[selectedMenuKey]} onSelect={handleMenuSelect}
-                      className="header-menu">
-                    <Menu.Item key="home" icon={<HomeOutlined/>}>
+            <div className="header-wrapper-user-profile">
+                <Menu mode="horizontal" selectedKeys={[selectedMenuKey]} onSelect={handleMenuSelect} className="header-menu">
+                    <Menu.Item key="home" icon={<HomeOutlined />}>
                         <Link to="/" className="header-link">Главная страница</Link>
                     </Menu.Item>
-                    <Menu.Item key="calculate" icon={<DollarOutlined/>}>
+                    <Menu.Item key="calculate" icon={<DollarOutlined />}>
                         <Link to="/calculate" className="header-link">Расчёт стоимости страховки</Link>
                     </Menu.Item>
-                    <SubMenu key="useful" icon={<QuestionCircleOutlined/>} title="Полезное" popupOffset={[0, 10]}>
+                    <SubMenu key="useful" icon={<QuestionCircleOutlined />} title="Полезное" popupOffset={[0, 10]}>
                         <Menu.Item key="osgovts">
                             <Link to={'osgovts'} className="header-link">ОСГО (ОСАГО)</Link>
                         </Menu.Item>
@@ -35,14 +34,14 @@ const Header = () => {
                             <Link to={'casko'} className="header-link">КАСКО</Link>
                         </Menu.Item>
                     </SubMenu>
-                    <Menu.Item key="profile" icon={<UserOutlined/>}>
-                        <Link to="/profile" className="header-link">Страница профиля</Link>
+                    <Menu.Item key="logout" icon={<UserOutlined />}>
+                        <Link to="/logout" className="header-link">Выйти</Link>
                     </Menu.Item>
                 </Menu>
             </div>
-            <div className={'header-margin'}/>
+            <div className="header-margin" />
         </div>
     );
 };
 
-export default Header;
+export default HeaderProfile;

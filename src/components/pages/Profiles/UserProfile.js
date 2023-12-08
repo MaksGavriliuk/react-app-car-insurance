@@ -1,12 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import { Card, Typography, Col, Row, Rate, Button } from 'antd';
+import React, {useEffect, useState} from 'react';
+import {Card, Typography, Col, Row, Rate, Button} from 'antd';
 import UserCarsTable from "../../Car/UserCarsTable";
 import Header from "../../Header/Header";
-import { useNavigate } from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import UserContractsTable from "../../Contracts/UserContractsTable";
 import userService from '../../../services/UserService';
+import HeaderProfile from "../../Header/HeaderProfile";
 
-const { Title, Text } = Typography;
+const {Title, Text} = Typography;
 
 export default function UserProfile() {
 
@@ -28,11 +29,20 @@ export default function UserProfile() {
 
     const handleAddFeedback = () => navigate('/add-feedback');
 
+    function handleOnClickAddCarButton() {
+        navigate('/add-car')
+    }
+
+    function handleOnClickAddContractButton() {
+        navigate('/calculate')
+    }
+
     return (
         <>
-            <Header />
+            <HeaderProfile/>
             <Card>
-                <Title level={2}>Доброго времени суток, {user.name} {user.patronymic}!</Title> {/* Изменено: условное отображение */}
+                <Title level={2}>Доброго времени
+                    суток, {user.name} {user.patronymic}!</Title> {/* Изменено: условное отображение */}
             </Card>
 
             <Row gutter={16}>
@@ -45,29 +55,32 @@ export default function UserProfile() {
                 </Col>
             </Row>
 
-            <Title level={3}>Список машин</Title>
-            <UserCarsTable />
+            <Row><Title level={3}>Список машин</Title>
+                <Button type={"primary"} onClick={handleOnClickAddCarButton}>Добавить машину</Button>
+            </Row>
+            <UserCarsTable/>
 
-            {user.feedbacks && user.feedbacks.length > 0 ? ( // Изменено: добавлено условие user.feedbacks
+            <Button type="primary" onClick={handleAddFeedback}>Добавить отзыв</Button>
+
+            {user.feedbacks && user.feedbacks.length > 0 ? (
                 <>
-                    <Title style={{ textAlign: 'center' }} level={3}>Ваши отзывы:</Title>
+                    <Title style={{textAlign: 'center'}} level={3}>Ваши отзывы:</Title>
                     <div style={boxStyle}>
                         <Row justify='space-around' align='center'>
                             {user.feedbacks.slice(0, 5).map((feedback) => (
                                 <Col span={4} key={feedback.id}>
                                     <Card title={feedback.feedback}>
-                                        <Rate allowHalf defaultValue={feedback.numberOfStars} disabled />
+                                        <Rate allowHalf defaultValue={feedback.numberOfStars} disabled/>
                                     </Card>
                                 </Col>
                             ))}
                         </Row>
                     </div>
                 </>
-            ) : (
-                <Button type="primary" onClick={handleAddFeedback}>Добавить отзыв</Button>
-            )}
+            ) : (<></>)}
 
-            <UserContractsTable />
+            <Button type={"primary"} onClick={handleOnClickAddContractButton} >Добавить страховку</Button>
+            <UserContractsTable/>
         </>
     );
 }
