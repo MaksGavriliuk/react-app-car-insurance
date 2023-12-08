@@ -3,6 +3,7 @@ import Header from "../Header/Header";
 import InsuranceCalculatorCard from "../InsuranceCalculatorCard/InsuranceCalculatorCard";
 import GoogleMaps from "../GoogleMaps";
 import ScrollToTopButton from "../ScrollToTopButton/ScrollToTopButton";
+import Footer from "../Footer/Footer";
 
 export default function StartPage() {
 
@@ -10,9 +11,9 @@ export default function StartPage() {
         <>
             <Header/>
             <InsuranceCalculatorCard/>
-            <GoogleMaps />
-            <ScrollToTopButton />
-
+            <GoogleMaps/>
+            <ScrollToTopButton/>
+            <Footer/>
         </>
     )
 
