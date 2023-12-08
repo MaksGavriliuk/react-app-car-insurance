@@ -1,0 +1,28 @@
+.approved-contracts {
+    margin: 20px;
+}
+
+.approved-contracts .ant-spin {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+}
+
+.approved-contracts .ant-empty {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.approved-contracts .ant-table {
+    margin-top: 20px;
+}
+
+.approved-contracts .ant-table-thead > tr > th {
+    background-color: #f5f5f5;
+    font-weight: bold;
+}
+
+.approved-contracts .ant-table-tbody > tr > td {
+    word-break: break-word;
+}

@@ -21,6 +21,7 @@ import AddFeedbackPage from "./components/pages/AddFeeadbackPage";
 import EngineVolumesPage from "./components/pages/EngineVolumesPage";
 import FuelTypesPage from "./components/pages/FuelTypesPage";
 import ContractsPage from "./components/pages/Contracts/ContractsPage";
+import ApprovedContractsPage from "./components/pages/Contracts/ApprovedContractsPage";
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -38,7 +39,7 @@ root.render(
               <Route path="/fuel-types" Component={FuelTypesPage} />
               <Route path="/contracts" Component={ContractsPage} />
               <Route path="/contracts/not-approved" Component={NotApprovedContracts} />
-              <Route path="/contracts/approved" Component={ApprovedContracts} />
+              <Route path="/contracts/approved" Component={ApprovedContractsPage} />
               <Route path="/profile" Component={Profile} />
               <Route path="/calculate" Component={InsuranceCalculation} />
 

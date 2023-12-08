@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import contractService from '../../services/ContractService';
 import { Table, Empty, Spin } from 'antd';
+import './Contracts.css'; // Подключение файла стилей
 
 export default function ApprovedContracts() {
     const [contracts, setContracts] = useState([]);
@@ -45,11 +46,6 @@ export default function ApprovedContracts() {
             key: 'userId',
         },
         {
-            title: 'ID страхователя',
-            dataIndex: ['insuranceAgent', 'id'],
-            key: 'insuranceAgentId',
-        },
-        {
             title: 'Тип страховки',
             dataIndex: ['insuranceType', 'insuranceType'],
             key: 'insuranceType',
@@ -91,15 +87,18 @@ export default function ApprovedContracts() {
         },
     ];
 
+
     return (
-        <>
+        <div className="approved-contracts">
             {isLoading ? (
-                <Spin />
+                <Spin className="spinner" />
             ) : contracts.length > 0 ? (
                 <Table dataSource={contracts} columns={columns} pagination={false} />
             ) : (
-                <Empty description="Список одобренных страховок пуст" />
+                <Empty className="empty-state" description="Список одобренных страховок пуст" />
             )}
-        </>
+        </div>
     );
 }
+
+
