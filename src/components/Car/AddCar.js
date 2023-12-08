@@ -5,6 +5,7 @@ import modelService from '../../services/ModelService';
 import engineVolumeService from '../../services/EngineVolumeService';
 import fuelTypeService from '../../services/FuelTypeService';
 import carService from '../../services/CarService';
+import Header from "../Header/Header";
 
 const {Option} = Select;
 
@@ -71,6 +72,7 @@ export default function AddCar() {
 
     return (
         <>
+            <Header/>
             <h2>Добавление автомобиля</h2>
             <Form form={form} onFinish={handleAddCar}>
                 <Form.Item name="selectedBrand" rules={[{required: true, message: 'Введите марку'}]}>
