@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import {Button, Card, Modal, message} from 'antd';
+import { Button, Card, Modal, message } from 'antd';
 import userService from '../../services/UserService';
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
+import './AddCar.css';
 
 export default function ModalFormChooseCars({ onCarSelect }) {
-
     const [cars, setCars] = useState([]);
     const [selectedCar, setSelectedCar] = useState(null);
     const [modalVisible, setModalVisible] = useState(false);
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
     useEffect(() => {
         (async function fetchCars() {
@@ -23,7 +23,7 @@ export default function ModalFormChooseCars({ onCarSelect }) {
 
     const handleCardClick = (car) => {
         setSelectedCar(car);
-        message.success('Машина выбрана')
+        message.success('Машина выбрана');
         onCarSelect(car); // Вызов пропа onCarSelect с выбранной машиной
         handleModalClose(); // Закрытие модального окна после выбора машины
     };
@@ -44,32 +44,34 @@ export default function ModalFormChooseCars({ onCarSelect }) {
     };
 
     const addCar = () => {
-        navigate('/add-car')
-    }
+        navigate('/add-car');
+    };
 
     return (
         <>
-            <button onClick={handleModalOpen}>Выбрать машину</button>
+            <button className="select-car-button" onClick={handleModalOpen}>
+                Выбрать машину
+            </button>
             <Modal
                 visible={modalVisible}
                 onCancel={handleModalClose}
                 onOk={() => handleCarSelect(selectedCar)}
                 title="Выберите машину"
+                className="car-modal"
             >
                 {cars.map((car) => (
                     <Card
                         key={car.id}
                         onClick={() => handleCardClick(car)}
                         hoverable
-                        style={{ width: 300 }}
+                        className={`car-card ${selectedCar && selectedCar.id === car.id ? 'selected' : ''}`}
                     >
-                        <Card.Meta
-                            title={car.model.name}
-                            description={`Модель: ${car.model.model}`}
-                        />
+                        <Card.Meta title={car.model.name} description={`Модель: ${car.model.model}`} />
                     </Card>
                 ))}
-                <Button onClick={addCar}>Добавить машину</Button>
+                <Button className="add-car-button" onClick={addCar}>
+                    Добавить машину
+                </Button>
             </Modal>
         </>
     );

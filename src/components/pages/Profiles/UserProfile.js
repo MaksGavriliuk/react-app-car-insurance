@@ -55,9 +55,7 @@ export default function UserProfile() {
                 </Col>
             </Row>
 
-            <Row><Title level={3}>Список машин</Title>
-                <Button type={"primary"} onClick={handleOnClickAddCarButton}>Добавить машину</Button>
-            </Row>
+            <Title level={3}>Список машин</Title>
             <UserCarsTable/>
 
             <Button type="primary" onClick={handleAddFeedback}>Добавить отзыв</Button>
