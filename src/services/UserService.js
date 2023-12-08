@@ -39,6 +39,14 @@ class UserService {
         }
     }
 
+    async fetchInsuranceAgentById(insuranceAgentId) {
+        try {
+            const response = await axios.get(`http://localhost:8080/agents/${insuranceAgentId}`);
+            return response.data;
+        } catch (error) {
+            throw  error;
+        }
+    }
 }
 
 export default new UserService();
