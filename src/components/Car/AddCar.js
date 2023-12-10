@@ -5,7 +5,7 @@ import modelService from '../../services/ModelService';
 import engineVolumeService from '../../services/EngineVolumeService';
 import fuelTypeService from '../../services/FuelTypeService';
 import carService from '../../services/CarService';
-import Header from '../Header/Header';
+import UserHeader from '../Header/UserHeader';
 import './AddCar.css';
 
 const {Option} = Select;
@@ -79,7 +79,7 @@ export default function AddCar() {
 
     return (
         <>
-            <Header/>
+            <UserHeader/>
             <div className="car-modal" style={{width: '60%'}}>
                 <h2>Добавление автомобиля</h2>
                 <div style={{display: 'flex', justifyContent: 'space-between'}}>

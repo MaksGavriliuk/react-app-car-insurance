@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from "../../Header/Header";
+import UserHeader from "../../Header/UserHeader";
 import ApprovedContracts from "../../Contracts/ApprovedContracts";
 import AgentHeader from "../../Header/AgentHeader";
 

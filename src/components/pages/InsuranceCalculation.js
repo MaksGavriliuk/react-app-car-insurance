@@ -7,7 +7,7 @@ import dayjs from 'dayjs';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
 import ModalFormChooseCars from '../Car/ModalFormChooseCars';
 import contractService from '../../services/ContractService';
-import Header from "../Header/Header";
+import UserHeader from "../Header/UserHeader";
 
 dayjs.extend(customParseFormat);
 const { RangePicker } = DatePicker;
@@ -93,7 +93,7 @@ const InsuranceCalculation = () => {
 
     return (
         <>
-            <Header />
+            <UserHeader />
             <Space direction="vertical" size={12}>
                 <Form form={form} initialValues={{}}>
                     {types.map((type) => (

@@ -3,7 +3,7 @@ import {Card, Typography, Row, Col, Button, Rate, Table, FloatButton} from 'antd
 import { useNavigate } from 'react-router-dom';
 import userService from '../../../services/UserService';
 import contractService from '../../../services/ContractService';
-import Header from '../../Header/Header';
+import UserHeader from '../../Header/UserHeader';
 import UserContractsTable from '../../Contracts/UserContractsTable';
 import AgentHeaderProfile from "../../Header/AgentHeaderProfile";
 

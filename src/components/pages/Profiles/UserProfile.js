@@ -1,11 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import {Card, Typography, Col, Row, Rate, Button, Space} from 'antd';
 import UserCarsTable from "../../Car/UserCarsTable";
-import Header from "../../Header/Header";
+import UserHeader from "../../Header/UserHeader";
 import {useNavigate} from "react-router-dom";
 import UserContractsTable from "../../Contracts/UserContractsTable";
 import userService from '../../../services/UserService';
-import HeaderProfile from "../../Header/HeaderProfile";
+import UserHeaderProfile from "../../Header/UserHeaderProfile";
 
 const {Title, Text} = Typography;
 
@@ -39,7 +39,7 @@ export default function UserProfile() {
 
     return (
         <>
-            <HeaderProfile/>
+            <UserHeaderProfile/>
             <Card>
                 <Title level={2}>Доброго времени
                     суток, {user.name} {user.patronymic}!</Title> {/* Изменено: условное отображение */}
