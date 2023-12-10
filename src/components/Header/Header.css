@@ -25,3 +25,31 @@
 .header-margin {
     height: 60px; /* Высота отступа */
 }
+.admin-header-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.admin-header-wrapper {
+    width: 70%;
+}
+
+.admin-header-wrapper-user-profile {
+    width: 60%;
+}
+
+.admin-header-menu {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10px;
+}
+
+.admin-header-link {
+    text-decoration: none;
+    color: #fff;
+}
+
+.admin-header-margin {
+    height: 60px;
+}

@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import modelService from '../../services/ModelService';
 import brandService from '../../services/BrandService';
-import { Table, Empty, Button, Form, Input, Modal, Spin, Select } from 'antd';
-import { toast } from 'react-toastify';
+import {Table, Empty, Button, Form, Input, Modal, Spin, Select} from 'antd';
+import {toast} from 'react-toastify';
 
-const { Option } = Select;
+const {Option} = Select;
 
 export default function ModelsTable() {
     const [models, setModels] = useState([]);
@@ -42,7 +42,7 @@ export default function ModelsTable() {
 
     const handleEdit = (record) => {
         const brand = brands.find((brand) => brand.id === record.brandId);
-        const updatedRecord = { ...record, brand };
+        const updatedRecord = {...record, brand};
         form.setFieldsValue(updatedRecord);
         setIsModalOpen(true);
         setEditingRecord(updatedRecord);
@@ -84,7 +84,7 @@ export default function ModelsTable() {
     };
 
     const handleAdd = () => {
-        form.setFieldsValue({ id: '', model: '', brandId: '' });
+        form.setFieldsValue({id: '', model: '', brandId: ''});
         setIsModalOpen(true);
         setEditingRecord(null);
     };
@@ -93,7 +93,7 @@ export default function ModelsTable() {
         form
             .validateFields()
             .then((values) => {
-                const newModel = { model: values.model, brandId: values.brandId };
+                const newModel = {model: values.model, brandId: values.brandId};
                 console.log(newModel)
                 modelService
                     .saveModel(newModel)
@@ -132,7 +132,7 @@ export default function ModelsTable() {
             key: 'actions',
             render: (text, record) => (
                 <>
-                    <Button onClick={() => handleEdit(record)} style={{ border: 'none', color: 'orange' }}>
+                    <Button onClick={() => handleEdit(record)} style={{border: 'none', color: 'orange'}}>
                         Редактировать
                     </Button>
                     <Button danger type="text" onClick={() => handleDelete(record.id, record.model)}>
@@ -146,15 +146,15 @@ export default function ModelsTable() {
     return (
         <>
             {isLoading ? (
-                <Spin size="large" />
+                <Spin size="large"/>
             ) : (
                 <Table
-                    pagination={false}
+                    pagination={{pageSize: 10}}
                     dataSource={models}
                     columns={columns}
                     locale={{
                         emptyText: (
-                            <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description="Нет данных" />
+                            <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description="Нет данных"/>
                         ),
                     }}
                     title={() => (
@@ -177,15 +177,15 @@ export default function ModelsTable() {
                     <Form.Item
                         name="model"
                         label="Модель"
-                        rules={[{ required: true, message: 'Введите модель' }]}
+                        rules={[{required: true, message: 'Введите модель'}]}
                     >
-                        <Input placeholder="Модель" />
+                        <Input placeholder="Модель"/>
                     </Form.Item>
 
                     <Form.Item
                         name="brandId"
                         label="Бренд"
-                        rules={[{ required: true, message: 'Выберите бренд' }]}
+                        rules={[{required: true, message: 'Выберите бренд'}]}
                     >
                         <Select placeholder="Выберите бренд">
                             {brands.map(brand => (

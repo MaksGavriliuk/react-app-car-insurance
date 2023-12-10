@@ -161,7 +161,7 @@ export default function BrandsTable() {
             {isLoading ? (
                 <Spin/>
             ) : brands.length > 0 ? (
-                <Table dataSource={brands} columns={columns} pagination={false}/>
+                <Table dataSource={brands} columns={columns} pagination={{pageSize: 10}}/>
             ) : (
                 <Empty description="Список брендов пуст"/>
             )}
