@@ -94,7 +94,7 @@ export default function ContractsPage() {
             <h1>Введите параметры, по которым Вы хотите отфильтровать страховки</h1>
             <ContractFilterForm onFilter={handleFilter}/>
             {contracts.length > 0 ? (
-                <Table dataSource={contracts} columns={columns}/>
+                <Table dataSource={contracts} columns={columns} pagination={{pageSize: 10}}/>
             ) : (
                 <Empty description={'Нет страховок, подходящих под фильтры'}/>
             )

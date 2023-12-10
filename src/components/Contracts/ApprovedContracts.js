@@ -93,7 +93,7 @@ export default function ApprovedContracts() {
             {isLoading ? (
                 <Spin className="spinner" />
             ) : contracts.length > 0 ? (
-                <Table dataSource={contracts} columns={columns} pagination={false} />
+                <Table dataSource={contracts} columns={columns} pagination={{pageSize: 10}} />
             ) : (
                 <Empty className="empty-state" description="Список одобренных страховок пуст" />
             )}
