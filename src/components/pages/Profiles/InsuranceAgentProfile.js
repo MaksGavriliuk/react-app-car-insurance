@@ -5,6 +5,7 @@ import userService from '../../../services/UserService';
 import contractService from '../../../services/ContractService';
 import Header from '../../Header/Header';
 import UserContractsTable from '../../Contracts/UserContractsTable';
+import AgentHeaderProfile from "../../Header/AgentHeaderProfile";
 
 const { Title, Text } = Typography;
 
@@ -107,7 +108,7 @@ export default function InsuranceAgentProfile() {
 
     return (
         <>
-            <Header />
+            <AgentHeaderProfile />
             <Card>
                 <Title level={2}>Доброго времени суток, {insuranceAgent.name} {insuranceAgent.patronymic}!</Title>
             </Card>
