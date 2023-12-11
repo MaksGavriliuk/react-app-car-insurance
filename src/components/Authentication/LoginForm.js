@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Form, Input } from 'antd';
 import { useNavigate } from 'react-router-dom';
-import './Authentication.css';
+// import './Authentication.css';
 import authenticationService from '../../services/AuthenticationService';
 
 const LoginForm = () => {
