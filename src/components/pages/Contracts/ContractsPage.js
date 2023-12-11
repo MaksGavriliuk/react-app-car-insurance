@@ -3,6 +3,7 @@ import ContractFilterForm from "./ContractFilterForm";
 import contractService from "../../../services/ContractService";
 import {Empty, message, Table} from "antd";
 import AgentHeader from "../../Header/AgentHeader";
+import Header from "../../Header/Header";
 
 
 export default function ContractsPage() {
@@ -91,6 +92,7 @@ export default function ContractsPage() {
 
     return (
         <>
+            <Header/>
             <h1>Введите параметры, по которым Вы хотите отфильтровать страховки</h1>
             <ContractFilterForm onFilter={handleFilter}/>
             {contracts.length > 0 ? (

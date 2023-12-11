@@ -29,6 +29,11 @@ const AgentHeader = () => {
                     </Menu.Item>
                     <SubMenu key="policies" icon={<DollarOutlined />} title="Страховки" popupOffset={[0, 10]}>
                         <Menu.Item key="pending-policies">
+                            <Link to="/contracts" className="header-link">
+                                Cтраховки
+                            </Link>
+                        </Menu.Item>
+                        <Menu.Item key="pending-policies">
                             <Link to="/contracts/not-approved" className="header-link">
                                 Не одобренные страховки
                             </Link>

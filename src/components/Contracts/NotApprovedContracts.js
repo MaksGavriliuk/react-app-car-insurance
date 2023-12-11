@@ -4,6 +4,7 @@ import insuranceAgentsService from "../../services/InsuranceAgentsService";
 import {Table, Empty, Button, Modal, Spin, message} from 'antd';
 import {ExclamationCircleOutlined} from '@ant-design/icons';
 import {toast} from 'react-toastify';
+import Header from "../Header/Header";
 
 
 export default function NotApprovedContracts() {
@@ -126,6 +127,7 @@ export default function NotApprovedContracts() {
 
     return (
         <>
+            <Header/>
             <Modal
                 title="Удаление страховки"
                 visible={isModalOpen}

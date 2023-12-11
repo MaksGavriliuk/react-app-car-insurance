@@ -116,11 +116,11 @@ export default function InsuranceAgentProfile() {
             <Row gutter={16}>
                 <Col span={8}>
                     <Card title="Информация о страховом агенте" bordered={true}>
-                        <Text>Фамилия: {insuranceAgent.surname}</Text>
-                        <Text>Пол: {insuranceAgent.sex}</Text>
-                        <Text>Возраст: {insuranceAgent.age}</Text>
-                        <Text>Общая выручка: {insuranceAgent.profit}</Text>
-                        <Text>Количество оформленных страховок: {insuranceAgent.contracts?.length || 0}</Text>
+                        <p>Фамилия: {insuranceAgent.surname}</p>
+                        <p>Пол: {insuranceAgent.sex}</p>
+                        <p>Возраст: {insuranceAgent.age}</p>
+                        <p>Общая выручка: {insuranceAgent.profit}</p>
+                        <p>Количество оформленных страховок: {approvedContracts.length || 0}</p>
                     </Card>
                 </Col>
             </Row>
