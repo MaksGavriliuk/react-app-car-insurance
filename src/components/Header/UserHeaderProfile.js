@@ -37,13 +37,13 @@ const UserHeaderProfile = () => {
                     </Menu.Item>
                     <SubMenu key="useful" icon={<QuestionCircleOutlined />} title="Полезное" popupOffset={[0, 10]}>
                         <Menu.Item key="osgovts">
-                            <Link to={'osgovts'} className="header-link">ОСГО (ОСАГО)</Link>
+                            <Link to={'/osgovts'} className="header-link">ОСГО (ОСАГО)</Link>
                         </Menu.Item>
                         <Menu.Item key="green-card">
                             <Link to={'/green-card'} className="header-link">Зеленая карта</Link>
                         </Menu.Item>
                         <Menu.Item key="casko">
-                            <Link to={'casko'} className="header-link">КАСКО</Link>
+                            <Link to={'/casko'} className="header-link">КАСКО</Link>
                         </Menu.Item>
                     </SubMenu>
                     <Menu.Item key="logout" icon={<UserOutlined />}>

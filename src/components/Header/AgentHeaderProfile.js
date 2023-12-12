@@ -30,6 +30,11 @@ const AgentHeaderProfile = () => {
                     </Menu.Item>
                     <SubMenu key="policies" icon={<DollarOutlined />} title="Страховки" popupOffset={[0, 10]}>
                         <Menu.Item key="pending-policies">
+                            <Link to="/contracts" className="header-link">
+                                Cтраховки
+                            </Link>
+                        </Menu.Item>
+                        <Menu.Item key="pending-policies">
                             <Link to="/contracts/not-approved" className="header-link">
                                 Не одобренные страховки
                             </Link>
@@ -42,7 +47,7 @@ const AgentHeaderProfile = () => {
                     </SubMenu>
                     <SubMenu key="useful" icon={<QuestionCircleOutlined />} title="Полезное " popupOffset={[0, 10]}>
                         <Menu.Item key="osgovts">
-                            <Link to={'osgovts'} className="header-link">
+                            <Link to={'/osgovts'} className="header-link">
                                 ОСГО (ОСАГО)
                             </Link>
                         </Menu.Item>
@@ -52,7 +57,7 @@ const AgentHeaderProfile = () => {
                             </Link>
                         </Menu.Item>
                         <Menu.Item key="casko">
-                            <Link to={'casko'} className="header-link">
+                            <Link to={'/casko'} className="header-link">
                                 КАСКО
                             </Link>
                         </Menu.Item>

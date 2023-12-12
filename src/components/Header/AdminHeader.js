@@ -5,7 +5,7 @@ import {
     DatabaseOutlined,
     QuestionCircleOutlined,
     UserOutlined,
-    CarOutlined
+    CarOutlined, DollarOutlined
 } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 import './Header.css';
@@ -50,9 +50,14 @@ const AdminHeader = () => {
                             </Link>
                         </Menu.Item>
                     </SubMenu>
+                    <Menu.Item title={'Страховки'} icon={<DollarOutlined/>} key="pending-policies">
+                        <Link to="/contracts" className="header-link">
+                            Cтраховки
+                        </Link>
+                    </Menu.Item>
                     <SubMenu key="useful" icon={<QuestionCircleOutlined />} title="Полезное" popupOffset={[0, 10]}>
                         <Menu.Item key="osgovts">
-                            <Link to={'osgovts'} className="admin-header-link">
+                            <Link to={'/osgovts'} className="admin-header-link">
                                 ОСГО (ОСАГО)
                             </Link>
                         </Menu.Item>
@@ -62,7 +67,7 @@ const AdminHeader = () => {
                             </Link>
                         </Menu.Item>
                         <Menu.Item key="casko">
-                            <Link to={'casko'} className="admin-header-link">
+                            <Link to={'/casko'} className="admin-header-link">
                                 КАСКО
                             </Link>
                         </Menu.Item>
